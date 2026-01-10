@@ -1,0 +1,349 @@
+{
+  "version": "1.0.0",
+  "name": "Designbrnd Marketplace",
+  "description": "Registry of MCP servers, skills, hooks, and plugins for AI-powered consulting workflow",
+  "last_updated": "2026-01-10",
+
+  "mcp_servers": [
+    {
+      "id": "figma-mcp",
+      "name": "Figma MCP Server",
+      "description": "AI-powered Figma design automation with write capabilities",
+      "repository": "https://github.com/Antonytm/figma-mcp-server",
+      "version": "latest",
+      "port": 38450,
+      "protocol": "websocket",
+      "category": "design",
+      "status": "stable",
+      "setup_command": "setup-figma-mcp.sh",
+      "dependencies": ["node", "npm", "figma-desktop"],
+      "tools": [
+        "create-component",
+        "create-frame",
+        "set-auto-layout",
+        "create-color-style",
+        "create-text-style",
+        "create-text",
+        "apply-color-style"
+      ],
+      "integration": {
+        "design_os": true,
+        "cloud_md": true,
+        "beads": true
+      }
+    },
+    {
+      "id": "design-os",
+      "name": "Design OS Commands",
+      "description": "Structured planning and design documentation system",
+      "repository": "https://github.com/0xtsotsi/Designbrnd",
+      "version": "1.0.0",
+      "category": "planning",
+      "status": "stable",
+      "setup_command": "setup-design-os.sh",
+      "commands": [
+        "/product-vision",
+        "/product-roadmap",
+        "/data-model",
+        "/design-tokens",
+        "/shape-section",
+        "/sample-data",
+        "/design-screen",
+        "/export-product"
+      ],
+      "outputs": {
+        "product-overview.md": "Business vision and goals",
+        "product-roadmap.md": "Sections and phases",
+        "data-model.md": "Entity definitions",
+        "colors.json": "Color palette",
+        "typography.json": "Font selections"
+      }
+    }
+  ],
+
+  "skills": [
+    {
+      "id": "client-discovery",
+      "name": "Client Discovery",
+      "description": "Learns discovery question patterns, industry-specific questions",
+      "category": "consulting",
+      "file": "client-discovery/SKILL.md",
+      "learns": [
+        "Question order and phrasing",
+        "Industry-specific requirements",
+        "Red flags to watch for",
+        "Budget and timeline patterns"
+      ],
+      "triggers": [
+        "/product-vision",
+        "client intake",
+        "discovery call"
+      ]
+    },
+    {
+      "id": "brand-design",
+      "name": "Brand Design",
+      "description": "Learns industry color preferences, component standards, typography pairings",
+      "category": "design",
+      "file": "brand-design/SKILL.md",
+      "learns": [
+        "Industry color preferences (restaurants → warm, tech → cool)",
+        "Component sizing standards (button padding, card padding)",
+        "Typography pairings that work",
+        "Your aesthetic preferences"
+      ],
+      "triggers": [
+        "/design-tokens",
+        "figma mcp design",
+        "brand system creation"
+      ]
+    },
+    {
+      "id": "figma-design",
+      "name": "Figma Design Automation",
+      "description": "Learns cloud.md preferences, component organization, naming conventions",
+      "category": "design",
+      "file": "figma-design/SKILL.md",
+      "learns": [
+        "cloud.md rule additions",
+        "Component organization patterns",
+        "Naming conventions (PascalCase, kebab-case)",
+        "Common client requests"
+      ],
+      "triggers": [
+        "figma mcp usage",
+        "component creation",
+        "screen design"
+      ]
+    },
+    {
+      "id": "implementation",
+      "name": "Implementation Standards",
+      "description": "Learns tech stack choices, code structure, testing requirements",
+      "category": "development",
+      "file": "implementation/SKILL.md",
+      "learns": [
+        "Tech stack rules (shadcn/ui, Next.js, etc.)",
+        "Code structure preferences",
+        "Testing requirements",
+        "Git commit message format"
+      ],
+      "triggers": [
+        "code implementation",
+        "ralph loop",
+        "testing"
+      ]
+    },
+    {
+      "id": "qa-verification",
+      "name": "QA & Verification",
+      "description": "Learns screenshot verification criteria, common bugs, accessibility standards",
+      "category": "quality",
+      "file": "qa-verification/SKILL.md",
+      "learns": [
+        "Screenshot verification checklist",
+        "Common visual bugs to check",
+        "Browser testing requirements",
+        "Accessibility (WCAG) standards"
+      ],
+      "triggers": [
+        "ralph loop verification",
+        "screenshot analysis",
+        "qa testing"
+      ]
+    }
+  ],
+
+  "hooks": [
+    {
+      "id": "stop-hook-reflect",
+      "name": "Auto-Reflection Hook",
+      "description": "Automatically captures learnings when Claude stops responding",
+      "event": "Stop",
+      "file": "stop-hook-reflect.sh",
+      "category": "learning",
+      "enabled": false,
+      "configuration": {
+        "type": "command",
+        "command": "~/.claude/hooks/stop-hook-reflect.sh"
+      },
+      "setup": {
+        "settings_file": "~/.claude/settings.json",
+        "path": "hooks.Stop.hooks",
+        "requires_git": true
+      }
+    },
+    {
+      "id": "stop-hook-git-check",
+      "name": "Git Commit Checker",
+      "description": "Checks for untracked files and reminds to commit",
+      "event": "Stop",
+      "file": "stop-hook-git-check.sh",
+      "category": "git",
+      "enabled": true,
+      "configuration": {
+        "type": "command",
+        "command": "~/.claude/hooks/stop-hook-git-check.sh"
+      }
+    },
+    {
+      "id": "user-prompt-submit-beads",
+      "name": "Beads Task Tracker",
+      "description": "Automatically checks Beads for next ready task",
+      "event": "UserPromptSubmit",
+      "file": "user-prompt-submit-beads.sh",
+      "category": "project-management",
+      "enabled": false,
+      "configuration": {
+        "type": "command",
+        "command": "~/.claude/hooks/user-prompt-submit-beads.sh"
+      },
+      "requires": ["bd"]
+    }
+  ],
+
+  "plugins": [
+    {
+      "id": "figma-plugin",
+      "name": "Figma MCP Plugin",
+      "description": "Figma plugin that executes MCP server commands in Figma",
+      "platform": "figma",
+      "repository": "https://github.com/Antonytm/figma-mcp-server",
+      "file": "figma-plugin/manifest.json",
+      "installation": "manual",
+      "requires": ["figma-desktop", "figma-mcp-server"]
+    }
+  ],
+
+  "tools": [
+    {
+      "id": "beads",
+      "name": "Beads Project Tracker",
+      "description": "Git-backed issue tracker for AI coding agents with persistent memory",
+      "repository": "https://github.com/steveyegge/beads",
+      "category": "project-management",
+      "setup_command": "setup-beads.sh",
+      "optional": true,
+      "cli_command": "bd",
+      "features": [
+        "Git-backed task storage",
+        "Dependency tracking",
+        "Ready task detection",
+        "Memory decay for long projects",
+        "Multi-agent support"
+      ]
+    },
+    {
+      "id": "ralph-loop",
+      "name": "RALPH LOOP",
+      "description": "Test-driven development workflow with visual verification",
+      "category": "testing",
+      "setup_command": "setup-ralph-loop.sh",
+      "technologies": ["playwright", "next.js", "shadcn-ui"],
+      "workflow": [
+        "Write E2E tests",
+        "Run tests (FAIL)",
+        "Implement components",
+        "Run tests (PASS)",
+        "Verify screenshots",
+        "Fix visual issues",
+        "Mark verified",
+        "Output promise"
+      ]
+    }
+  ],
+
+  "workflows": [
+    {
+      "id": "6-week-consulting",
+      "name": "6-Week Consulting Workflow",
+      "description": "Complete end-to-end consulting project workflow",
+      "phases": [
+        {
+          "week": 1,
+          "name": "Discovery & Planning",
+          "tools": ["design-os"],
+          "commands": ["/product-vision", "/product-roadmap", "/data-model"],
+          "deliverables": ["product-overview.md", "product-roadmap.md", "data-model.md"]
+        },
+        {
+          "week": 2,
+          "name": "Brand System Design",
+          "tools": ["design-os", "figma-mcp"],
+          "commands": ["/design-tokens"],
+          "prompts": ["Create brand system in Figma"],
+          "deliverables": ["colors.json", "typography.json", "Figma brand system"]
+        },
+        {
+          "week": 3,
+          "name": "Screen Design",
+          "tools": ["design-os", "figma-mcp"],
+          "commands": ["/shape-section", "/sample-data"],
+          "prompts": ["Create screen designs in Figma"],
+          "deliverables": ["section specs", "sample data", "Figma screen designs"]
+        },
+        {
+          "week": "4-5",
+          "name": "Implementation",
+          "tools": ["ralph-loop", "design-os"],
+          "commands": ["/export-product"],
+          "workflow": "RALPH LOOP",
+          "deliverables": ["Implemented features", "Passing tests", "Verified screenshots"]
+        },
+        {
+          "week": 6,
+          "name": "Launch",
+          "tools": [],
+          "deliverables": ["Production deployment", "Client handoff", "Documentation"]
+        }
+      ]
+    }
+  ],
+
+  "templates": [
+    {
+      "id": "client-project",
+      "name": "Client Project Template",
+      "description": "Complete workspace setup for new client project",
+      "script": "init-workspace.sh",
+      "includes": [
+        "design-os",
+        "figma-mcp",
+        "ralph-loop",
+        "reflection-system",
+        "beads"
+      ],
+      "directory_structure": {
+        "product/": "Design OS outputs",
+        "src/": "Next.js application",
+        "e2e/": "Playwright tests",
+        ".claude/": "Claude Code configuration",
+        "cloud.md": "Figma design rules"
+      }
+    }
+  ],
+
+  "setup_scripts": {
+    "init-workspace.sh": "Complete workspace initialization",
+    "setup-figma-mcp.sh": "Install and configure Figma MCP Server",
+    "setup-design-os.sh": "Install Design OS commands",
+    "setup-ralph-loop.sh": "Configure test-driven development",
+    "setup-reflection.sh": "Initialize skill learning system",
+    "setup-beads.sh": "Install Beads project tracker"
+  },
+
+  "documentation": {
+    "guides": [
+      "docs/consulting-workflow-guide.md",
+      "docs/quick-start-guide.md",
+      "docs/tool-integration-reference.md"
+    ],
+    "presentations": [
+      "slides.md"
+    ],
+    "references": [
+      "cloud.md",
+      "product/README.md"
+    ]
+  }
+}
