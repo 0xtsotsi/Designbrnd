@@ -65,7 +65,7 @@ cp -r Designbrnd/.claude/commands/design-os ~/.claude/commands/
 - Generate brand guidelines automatically
 - Design screens from specs
 - Apply design tokens (colors, typography)
-- Use cloud.md design rules
+- Use claude.md design rules
 
 **Install:**
 ```bash
@@ -81,8 +81,8 @@ npm start  # Runs on http://localhost:38450
 # Figma Desktop → Plugins → Development → Import manifest
 # Select: figma-mcp-server/figma-plugin/manifest.json
 
-# Copy cloud.md design rules
-cp Designbrnd/cloud.md ./cloud.md
+# Copy claude.md design rules
+cp Designbrnd/claude.md ./claude.md
 ```
 
 **Requirements:**
@@ -135,7 +135,7 @@ npx shadcn@latest init
 **Skills:**
 1. **Client Discovery** - Learns discovery question patterns
 2. **Brand Design** - Learns industry colors and component standards
-3. **Figma Design** - Learns cloud.md preferences and naming
+3. **Figma Design** - Learns claude.md preferences and naming
 4. **Implementation** - Learns tech stack and code structure
 5. **QA Verification** - Learns screenshot verification criteria
 
@@ -208,7 +208,7 @@ designbrnd-init "project-name" "Client Name"
 - Playwright E2E testing
 - Reflection skills
 - Beads project template
-- cloud.md design rules
+- claude.md design rules
 - Documentation and README
 
 **Install:**

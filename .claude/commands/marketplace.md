@@ -85,7 +85,7 @@ All available tools are cataloged in:
 - **Port:** 38450
 - **Protocol:** WebSocket
 - **Tools:** 23 design manipulation tools
-- **Integration:** Design OS, cloud.md, Beads
+- **Integration:** Design OS, claude.md, Beads
 
 ## Skills
 
@@ -100,7 +100,7 @@ All available tools are cataloged in:
 - **File:** ~/.claude/skills/brand-design/SKILL.md
 
 ### Figma Design
-- **Learns:** cloud.md patterns, naming conventions
+- **Learns:** claude.md patterns, naming conventions
 - **Triggers:** Figma MCP usage
 - **File:** ~/.claude/skills/figma-design/SKILL.md
 

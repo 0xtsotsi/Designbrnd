@@ -422,7 +422,7 @@ workspace-root/
 │   ├── implementation/SKILL.md
 │   └── qa-verification/SKILL.md
 │
-├── cloud.md                           ← Figma design rules
+├── claude.md                           ← Figma design rules
 ├── .beads-template.json               ← Project template
 ├── package.json                       ← Dependencies
 ├── playwright.config.ts               ← Test config
@@ -442,7 +442,7 @@ colors.json               →  Create color styles
 typography.json           →  Create text styles
 spec.md                   →  Screen structure
 data.json                 →  Sample content
-cloud.md                  →  Design rules
+claude.md                  →  Design rules
 ```
 
 ### Figma MCP → RALPH LOOP

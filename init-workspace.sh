@@ -17,7 +17,7 @@
 #   - RALPH LOOP testing
 #   - Reflection System skills
 #   - Beads project tracker
-#   - cloud.md design rules
+#   - claude.md design rules
 # ============================================================================
 
 set -e  # Exit on error
@@ -183,12 +183,12 @@ EOF
 setup_figma_mcp() {
     log_info "Setting up Figma MCP..."
 
-    # Copy cloud.md design rules
-    if [ -f "$DESIGNBRND_ROOT/cloud.md" ]; then
-        cp "$DESIGNBRND_ROOT/cloud.md" ./
-        log_success "cloud.md design rules copied"
+    # Copy claude.md design rules
+    if [ -f "$DESIGNBRND_ROOT/claude.md" ]; then
+        cp "$DESIGNBRND_ROOT/claude.md" ./
+        log_success "claude.md design rules copied"
     else
-        log_warning "cloud.md not found, creating template..."
+        log_warning "claude.md not found, creating template..."
         create_cloud_md_template
     fi
 
@@ -217,7 +217,7 @@ EOF
 }
 
 create_cloud_md_template() {
-    cat > cloud.md << 'EOF'
+    cat > claude.md << 'EOF'
 # Figma Design Rules
 
 ## Component Creation
@@ -399,7 +399,7 @@ setup_reflection_system() {
     # Create skill templates
     create_skill_template "client-discovery" "Client Discovery" "Discovery question order, industry patterns, required info"
     create_skill_template "brand-design" "Brand Design" "Industry colors, component standards, typography pairings"
-    create_skill_template "figma-design" "Figma Design" "cloud.md patterns, component organization, naming conventions"
+    create_skill_template "figma-design" "Figma Design" "claude.md patterns, component organization, naming conventions"
     create_skill_template "implementation" "Implementation" "Tech stack rules, code structure, testing requirements"
     create_skill_template "qa-verification" "QA Verification" "Screenshot checks, common bugs, accessibility standards"
 
@@ -659,7 +659,7 @@ npm run test:ui  # Visual test runner
 ## Tools Configured
 
 - ✅ Design OS commands
-- ✅ Figma MCP (cloud.md rules)
+- ✅ Figma MCP (claude.md rules)
 - ✅ RALPH LOOP (Playwright E2E)
 - ✅ Reflection System (skills in ~/.claude/skills)
 - $(command -v bd &> /dev/null && echo "✅" || echo "⏸️") Beads project tracker
@@ -682,7 +682,7 @@ $WORKSPACE_ROOT/
 │   ├── commands/
 │   ├── skills/
 │   └── hooks/
-└── cloud.md             # Figma design rules
+└── claude.md             # Figma design rules
 \`\`\`
 
 ## Commands Reference
@@ -776,7 +776,7 @@ EOF
     git commit -m "Initial workspace setup
 
 - Design OS commands configured
-- Figma MCP with cloud.md rules
+- Figma MCP with claude.md rules
 - RALPH LOOP testing framework
 - Reflection System skills
 - Beads project tracker
@@ -817,7 +817,7 @@ print_summary() {
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo "✓ Design OS       - Commands in .claude/commands/"
-    echo "✓ Figma MCP       - Rules in cloud.md"
+    echo "✓ Figma MCP       - Rules in claude.md"
     echo "✓ RALPH LOOP      - Playwright configured"
     echo "✓ Reflection      - Skills in ~/.claude/skills/"
     if command -v bd &> /dev/null; then

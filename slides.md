@@ -353,7 +353,7 @@ layout: default
 
 ```markdown
 Using the design tokens from Design OS (colors.json, typography.json)
-and following the rules in cloud.md, create a complete brand system
+and following the rules in claude.md, create a complete brand system
 in Figma with brand guidelines page and component library.
 ```
 

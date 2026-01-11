@@ -385,11 +385,11 @@ npm start
 - `set-parent` - Move node to parent
 - `delete-node` - Remove node
 
-### cloud.md Integration
+### claude.md Integration
 
 **Purpose:** Provide design rules and best practices for AI
 
-**Location:** Project root (`cloud.md`)
+**Location:** Project root (`claude.md`)
 
 **Key Sections:**
 
@@ -416,14 +416,14 @@ npm start
 - Hierarchical structure with proper spacing
 ```
 
-**AI reads cloud.md** before executing design tasks.
+**AI reads claude.md** before executing design tasks.
 
 ### Example Prompts
 
 **Create Brand System:**
 ```
 Using the design tokens from Design OS (colors.json, typography.json)
-and following the rules in cloud.md, create a complete brand system
+and following the rules in claude.md, create a complete brand system
 in Figma with:
 
 1. Brand Guidelines page with color palette and typography scale
@@ -443,7 +443,7 @@ the "Screens/Homepage" page with:
 4. Footer CTA (background: primary color, centered)
 
 Create both desktop (1440px) and mobile (375px) versions.
-Follow all spacing and layout rules from cloud.md.
+Follow all spacing and layout rules from claude.md.
 ```
 
 **Iterate Design:**
@@ -1075,13 +1075,13 @@ git push origin main
 │ • colors.json (Design OS)                                   │
 │ • typography.json (Design OS)                               │
 │ • spec.md (Design OS)                                       │
-│ • cloud.md (project root)                                   │
+│ • claude.md (project root)                                   │
 │ • figma-design/SKILL.md (learned patterns)                  │
 │                                                             │
 │ Process:                                                    │
 │ • AI reads inputs                                           │
 │ • Creates Figma designs via MCP tools                       │
-│ • Follows cloud.md + SKILL.md rules                         │
+│ • Follows claude.md + SKILL.md rules                         │
 │                                                             │
 │ Output:                                                     │
 │ • Figma file with designs                                   │
@@ -1168,10 +1168,10 @@ git push origin main
 - Restart Figma and plugin
 - Check firewall/port blocking
 
-**Issue:** Design not matching cloud.md rules
+**Issue:** Design not matching claude.md rules
 **Solution:**
-- Verify cloud.md in project root
-- Check AI prompt includes "following cloud.md rules"
+- Verify claude.md in project root
+- Check AI prompt includes "following claude.md rules"
 - Review SKILL.md for conflicting learned patterns
 
 ---

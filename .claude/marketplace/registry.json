@@ -101,11 +101,11 @@
     {
       "id": "figma-design",
       "name": "Figma Design Automation",
-      "description": "Learns cloud.md preferences, component organization, naming conventions",
+      "description": "Learns claude.md preferences, component organization, naming conventions",
       "category": "design",
       "file": "figma-design/SKILL.md",
       "learns": [
-        "cloud.md rule additions",
+        "claude.md rule additions",
         "Component organization patterns",
         "Naming conventions (PascalCase, kebab-case)",
         "Common client requests"
@@ -318,7 +318,7 @@
         "src/": "Next.js application",
         "e2e/": "Playwright tests",
         ".claude/": "Claude Code configuration",
-        "cloud.md": "Figma design rules"
+        "claude.md": "Figma design rules"
       }
     }
   ],
@@ -342,7 +342,7 @@
       "slides.md"
     ],
     "references": [
-      "cloud.md",
+      "claude.md",
       "product/README.md"
     ]
   }

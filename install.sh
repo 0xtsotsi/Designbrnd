@@ -30,7 +30,7 @@ echo -e "${PURPLE}━━━━━━━━━━━━━━━━━━━━�
 echo ""
 echo -e "${BLUE}Installing:${NC}"
 echo "  • Design OS Commands (8 commands)"
-echo "  • Figma MCP Integration (cloud.md rules)"
+echo "  • Figma MCP Integration (claude.md rules)"
 echo "  • RALPH LOOP (Test-driven development)"
 echo "  • Reflection Skills (5 learning modules)"
 echo "  • Beads Integration (Task tracking)"
@@ -91,10 +91,10 @@ echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━�
 MCP_DIR="$HOME/.claude/mcp-servers"
 mkdir -p "$MCP_DIR"
 
-# Copy cloud.md to home directory for easy access
-if [ -f "cloud.md" ]; then
-    cp cloud.md "$HOME/.claude/cloud.md"
-    echo -e "${GREEN}✓${NC} cloud.md installed to ~/.claude/cloud.md"
+# Copy claude.md to home directory for easy access
+if [ -f "claude.md" ]; then
+    cp claude.md "$HOME/.claude/claude.md"
+    echo -e "${GREEN}✓${NC} claude.md installed to ~/.claude/claude.md"
 fi
 
 # Create Figma MCP config
@@ -169,7 +169,7 @@ SKILL_NAMES=("Client Discovery" "Brand Design" "Figma Design" "Implementation" "
 SKILL_DESCS=(
     "Discovery question patterns, industry requirements"
     "Industry colors, component standards, typography"
-    "cloud.md patterns, naming conventions"
+    "claude.md patterns, naming conventions"
     "Tech stack rules, code structure"
     "Screenshot verification, visual bugs"
 )

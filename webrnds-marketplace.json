@@ -105,7 +105,7 @@
       "id": "figma-mcp-integration",
       "name": "Figma MCP Integration",
       "version": "1.0.0",
-      "description": "AI-powered Figma design automation with cloud.md design rules",
+      "description": "AI-powered Figma design automation with claude.md design rules",
       "type": "mcp-server",
       "install": {
         "type": "git",
@@ -123,12 +123,12 @@
       "configuration": {
         "port": 38450,
         "protocol": "websocket",
-        "design_rules": "cloud.md"
+        "design_rules": "claude.md"
       },
       "files": [
         {
-          "source": "https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/cloud.md",
-          "destination": "cloud.md",
+          "source": "https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/claude.md",
+          "destination": "claude.md",
           "description": "Figma design rules and component standards"
         }
       ],
@@ -188,7 +188,7 @@
         {
           "id": "figma-design",
           "name": "Figma Design Automation",
-          "description": "Learns cloud.md preferences and naming conventions",
+          "description": "Learns claude.md preferences and naming conventions",
           "file": "~/.claude/skills/figma-design/SKILL.md"
         },
         {

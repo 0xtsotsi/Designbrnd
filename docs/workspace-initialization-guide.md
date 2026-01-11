@@ -99,7 +99,7 @@ italian-restaurant/
 ├── .beads/                       # Beads project tracker
 │   └── *.jsonl                   # Task data
 │
-├── cloud.md                      # Figma design rules
+├── claude.md                      # Figma design rules
 ├── .beads-template.json          # Beads project template
 ├── package.json                  # Next.js dependencies
 ├── playwright.config.ts          # Playwright configuration
@@ -174,7 +174,7 @@ Initializes Git repository with `.gitignore`.
 ### Phase 4: Figma MCP Configuration 🎨
 
 **Creates:**
-- `cloud.md` - Figma design rules (auto-layout, component standards)
+- `claude.md` - Figma design rules (auto-layout, component standards)
 - `.claude/mcp-servers/figma-mcp.json` - MCP config
 
 **Manual Step Required:**
@@ -285,7 +285,7 @@ Shows warning with installation link.
 Initial workspace setup
 
 - Design OS commands configured
-- Figma MCP with cloud.md rules
+- Figma MCP with claude.md rules
 - RALPH LOOP testing framework
 - Reflection System skills
 - Beads project tracker
@@ -407,7 +407,7 @@ bd done [task-id]
 # Select colors and fonts, generates colors.json, typography.json
 
 # Use Figma MCP
-# Prompt Claude: "Create brand system in Figma using design tokens and cloud.md"
+# Prompt Claude: "Create brand system in Figma using design tokens and claude.md"
 # AI creates: Brand guidelines, component library
 
 # Reflect on learnings
@@ -655,7 +655,7 @@ A: Yes, edit `.beads-template.json` to define your own phases.
 
 **Configures:**
 - ✅ Design OS (8 commands)
-- ✅ Figma MCP (cloud.md rules)
+- ✅ Figma MCP (claude.md rules)
 - ✅ RALPH LOOP (Playwright + Next.js)
 - ✅ Reflection System (5 skills)
 - ✅ Beads (project tracker)

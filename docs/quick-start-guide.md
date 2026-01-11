@@ -98,16 +98,16 @@ npm start
 
 ---
 
-## Step 3: Create cloud.md for Your Projects (5 minutes)
+## Step 3: Create claude.md for Your Projects (5 minutes)
 
 ### Copy Template
 
 ```bash
 # In your Designbrnd directory
-cp cloud.md ~/client-project-template/cloud.md
+cp claude.md ~/client-project-template/claude.md
 ```
 
-The `cloud.md` file contains Figma design rules. Key sections:
+The `claude.md` file contains Figma design rules. Key sections:
 
 - **Component Creation** - Auto-layout, component properties
 - **Typography** - Text style hierarchy (H1-H4, Body)
@@ -115,7 +115,7 @@ The `cloud.md` file contains Figma design rules. Key sections:
 - **Spacing** - 8px grid system
 - **Naming Conventions** - PascalCase, kebab-case rules
 
-**Customize:** Add your specific preferences to cloud.md
+**Customize:** Add your specific preferences to claude.md
 
 ---
 
@@ -337,7 +337,7 @@ Open Figma, start plugin, then in Claude:
 ```
 You (to Claude with Figma MCP access):
 "Using the design tokens from Design OS (colors.json, typography.json)
-and following the rules in cloud.md, create a brand guidelines page
+and following the rules in claude.md, create a brand guidelines page
 in Figma with color palette and typography scale."
 
 Claude + Figma MCP: Creates Figma design in ~10 minutes
@@ -382,7 +382,7 @@ Claude: Updates SKILL.md, commits to git
 | Task | Prompt Template |
 |------|----------------|
 | Brand System | "Create brand guidelines and component library using design tokens from colors.json and typography.json" |
-| Screen Design | "Create [page name] design using components and following cloud.md rules. Include desktop (1440px) and mobile (375px)" |
+| Screen Design | "Create [page name] design using components and following claude.md rules. Include desktop (1440px) and mobile (375px)" |
 | Social Templates | "Create social media template library: Instagram posts, stories, Facebook cover" |
 | Iterate | "Update [element] to [changes]" |
 
@@ -455,7 +455,7 @@ After completing your first session:
    - Review Figma designs
    - Read skill updates in `~/.claude/skills/`
 
-2. **Refine cloud.md**
+2. **Refine claude.md**
    - Add any preferences discovered
    - Document your button/card standards
    - Note industry-specific patterns

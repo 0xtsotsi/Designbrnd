@@ -66,7 +66,7 @@ Designbrnd/
 ├── MARKETPLACE.md              # Documentation
 ├── PUBLISHING.md               # This file
 ├── init-workspace.sh           # Workspace initializer
-├── cloud.md                    # Figma design rules
+├── claude.md                    # Figma design rules
 ├── .claude/
 │   ├── commands/
 │   │   ├── design-os/          # Design OS commands

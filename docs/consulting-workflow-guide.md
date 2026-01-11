@@ -63,7 +63,7 @@ This guide documents the complete automated workflow for design consultants help
 │ • /design-tokens → colors.json, typography.json              │
 │                                                              │
 │ Figma MCP (AI-Powered):                                      │
-│ • AI reads design tokens + cloud.md rules                    │
+│ • AI reads design tokens + claude.md rules                    │
 │ • Creates Brand Guidelines page (colors, typography)         │
 │ • Creates Components page (buttons, inputs, cards, nav)      │
 │ • All auto-layout, component properties, best practices      │
@@ -85,7 +85,7 @@ This guide documents the complete automated workflow for design consultants help
 │ Figma MCP (AI-Powered):                                      │
 │ • AI reads specs + sample data + component library           │
 │ • Creates screen designs (desktop 1440px + mobile 375px)     │
-│ • Uses components, follows cloud.md rules                    │
+│ • Uses components, follows claude.md rules                    │
 │ • Client reviews professional mockups                        │
 │                                                              │
 │ Iteration: Client requests changes → AI updates in 2 mins    │
@@ -213,7 +213,7 @@ This guide documents the complete automated workflow for design consultants help
 **How It Works:**
 1. MCP Server communicates with Figma via WebSocket
 2. Figma plugin executes design commands in Figma document
-3. AI reads `cloud.md` rules for best practices
+3. AI reads `claude.md` rules for best practices
 4. AI reads design tokens from Design OS
 5. AI creates/modifies Figma designs automatically
 
@@ -233,13 +233,13 @@ This guide documents the complete automated workflow for design consultants help
 - **20x faster:** 15 minutes vs. 3-5 hours per screen
 
 **Configuration:**
-- `cloud.md` - Design rules and best practices (at project root)
+- `claude.md` - Design rules and best practices (at project root)
 - Design tokens from Design OS (`colors.json`, `typography.json`)
 
 **Example Workflow:**
 ```
 You (to Claude with Figma MCP):
-"Using the design tokens from Design OS and following cloud.md rules,
+"Using the design tokens from Design OS and following claude.md rules,
 create a complete brand system in Figma with brand guidelines page
 and component library."
 
@@ -337,7 +337,7 @@ Learns:
 
 #### 3. Figma Automation (`~/.claude/skills/figma-design/SKILL.md`)
 Learns:
-- cloud.md preferences and additions
+- claude.md preferences and additions
 - Component organization patterns
 - Naming conventions
 - Common client requests
@@ -448,7 +448,7 @@ Output: colors.json, typography.json
 **Day 2: AI Creates Figma Brand System**
 ```
 You (to Claude with Figma MCP):
-"Using design tokens and cloud.md rules, create complete brand system."
+"Using design tokens and claude.md rules, create complete brand system."
 
 AI Creates in Figma:
 - Page 1: Brand Guidelines
@@ -757,7 +757,7 @@ Skills are expert-level:
    - Install from: https://github.com/Antonytm/figma-mcp-server
    - Configure WebSocket connection
    - Install Figma plugin (development mode)
-   - Create `cloud.md` in project root
+   - Create `claude.md` in project root
 
 3. **RALPH LOOP Setup**
    - Next.js project with App Router
@@ -774,7 +774,7 @@ Skills are expert-level:
 ### First Project Checklist
 
 - [ ] Set up client project directory
-- [ ] Copy `cloud.md` to project root
+- [ ] Copy `claude.md` to project root
 - [ ] Run `/product-vision` for discovery
 - [ ] Run `/product-roadmap` for scope
 - [ ] Run `/data-model` for structure
@@ -791,7 +791,7 @@ Skills are expert-level:
 ### Ongoing Optimization
 
 - Review skill updates after each project
-- Refine `cloud.md` based on patterns
+- Refine `claude.md` based on patterns
 - Build template library of common components
 - Document industry-specific learnings
 - Share successful patterns with team
