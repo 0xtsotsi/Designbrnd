@@ -36,9 +36,9 @@ Multiple pre-defined themes with instant switching:
 
 ### 4. **Design OS Navigation**
 Organized into sections:
-- **Workflow** (Overview, Board, Planning)
-- **Tools** (Mockups, Review, Export)
-- **Project** (Settings, Team, Integrations)
+- **Project** (Kanban Board)
+- **Tools** (Plannotator, ShowMe, Beads, Design OS, Terminal)
+- **Bottom Section** (Wiki, Running Agents, Settings)
 
 ### 5. **Metrics Dashboard**
 Live stats in sidebar:
@@ -525,6 +525,7 @@ import { SidebarNav } from './SidebarNav';
 import { SidebarMetrics } from './SidebarMetrics';
 import { SidebarFooter } from './SidebarFooter';
 import { SidebarToggle } from './SidebarToggle';
+import { Plus, FolderOpen, Layers, ChevronDown, MoreVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Sidebar() {
@@ -543,21 +544,50 @@ export function Sidebar() {
         borderColor: currentTheme.colors.sidebar.border,
       }}
     >
-      {/* Header */}
-      <div className="h-14 flex items-center justify-between px-4 border-b"
+      {/* Header with branding */}
+      <div className="px-4 py-4 border-b flex items-center justify-between"
         style={{ borderColor: currentTheme.colors.sidebar.border }}
       >
-        {!isCollapsed && (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">DS</span>
-            </div>
-            <span className="font-semibold" style={{ color: currentTheme.colors.text.primary }}>
-              Design OS
-            </span>
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded bg-cyan-500 flex items-center justify-center">
+            <Layers className="w-5 h-5 text-white" strokeWidth={2} />
           </div>
-        )}
-        <SidebarToggle />
+          <span className="text-white font-semibold text-lg">designbrnd.</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <SidebarToggle />
+          <div className="relative">
+            <button className="w-7 h-7">
+              <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 flex items-center justify-center text-[10px]">1</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Action Buttons (+ New, folder count) */}
+      <div className="px-3 py-3 space-y-2">
+        <button className="w-full justify-start gap-2 bg-stone-800 hover:bg-stone-700">
+          <Plus className="w-4 h-4" />
+          New
+        </button>
+        <button className="w-full justify-start gap-2">
+          <FolderOpen className="w-4 h-4" />
+          <span className="flex-1 text-left">5</span>
+        </button>
+      </div>
+
+      {/* Current Project */}
+      <div className="px-3 py-2 border-b" style={{ borderColor: currentTheme.colors.sidebar.border }}>
+        <div className="flex items-center justify-between px-3 py-2 rounded bg-stone-800/50">
+          <div className="flex items-center gap-2">
+            <FolderOpen className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm">Designbrnd Project</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <ChevronDown className="w-3 h-3" />
+            <MoreVertical className="w-3 h-3" />
+          </div>
+        </div>
       </div>
 
       {/* Navigation */}
@@ -590,13 +620,10 @@ import { cn } from '@/lib/utils';
 import {
   LayoutDashboard,
   Kanban,
-  Pencil,
   Palette,
   FileCheck,
-  Package,
-  Settings,
-  Users,
-  Plug,
+  Layers,
+  Terminal,
 } from 'lucide-react';
 
 interface NavItem {
@@ -608,17 +635,13 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { id: 'overview', label: 'Overview', icon: LayoutDashboard, path: '/', section: 'Workflow' },
-  { id: 'board', label: 'Board', icon: Kanban, path: '/board', section: 'Workflow' },
-  { id: 'planning', label: 'Planning', icon: Pencil, path: '/planning', section: 'Workflow' },
+  { id: 'kanban', label: 'Kanban Board', icon: Kanban, path: '/kanban', section: 'Project' },
 
-  { id: 'mockups', label: 'Mockups', icon: Palette, path: '/mockups', section: 'Tools' },
-  { id: 'review', label: 'Review', icon: FileCheck, path: '/review', section: 'Tools' },
-  { id: 'export', label: 'Export', icon: Package, path: '/export', section: 'Tools' },
-
-  { id: 'settings', label: 'Settings', icon: Settings, path: '/settings', section: 'Project' },
-  { id: 'team', label: 'Team', icon: Users, path: '/team', section: 'Project' },
-  { id: 'integrations', label: 'Integrations', icon: Plug, path: '/integrations', section: 'Project' },
+  { id: 'plannotator', label: 'Plannotator', icon: FileCheck, path: '/plannotator', section: 'Tools' },
+  { id: 'showme', label: 'ShowMe', icon: Palette, path: '/showme', section: 'Tools' },
+  { id: 'beads', label: 'Beads', icon: LayoutDashboard, path: '/beads', section: 'Tools' },
+  { id: 'design-os', label: 'Design OS', icon: Layers, path: '/', section: 'Tools' },
+  { id: 'terminal', label: 'Terminal', icon: Terminal, path: '/terminal', section: 'Tools' },
 ];
 
 interface SidebarNavProps {
@@ -766,8 +789,9 @@ export function SidebarMetrics() {
 // src/components/layout/SidebarFooter.tsx
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useThemeStore } from '@/lib/state/theme-store';
-import { Palette, User, Settings } from 'lucide-react';
+import { Palette, User, Settings, FolderOpen } from 'lucide-react';
 import { ThemeSelector } from '../theme/ThemeSelector';
 import { cn } from '@/lib/utils';
 
@@ -781,6 +805,37 @@ export function SidebarFooter({ collapsed }: SidebarFooterProps) {
 
   return (
     <>
+      {/* Bottom section items (Wiki, Running Agents) */}
+      <div
+        className="border-t px-3 py-3 space-y-1"
+        style={{ borderColor: currentTheme.colors.sidebar.border }}
+      >
+        <button
+          className="w-full flex items-center gap-3 px-3 py-2 rounded text-sm text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
+        >
+          <FolderOpen className="w-4 h-4 shrink-0" />
+          <span className="flex-1 text-left">Wiki</span>
+        </button>
+
+        <button
+          className="w-full flex items-center gap-3 px-3 py-2 rounded text-sm text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
+        >
+          <div className="w-4 h-4 shrink-0">
+            <svg viewBox="0 0 16 16" className="w-4 h-4">
+              <path
+                fill="currentColor"
+                d="M2 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+              />
+            </svg>
+          </div>
+          <span className="flex-1 text-left">Running Agents</span>
+          <div className="w-5 h-5 rounded-full bg-cyan-500 flex items-center justify-center text-[10px] font-medium text-white">
+            1
+          </div>
+        </button>
+      </div>
+
+      {/* Theme and settings controls */}
       <div
         className="border-t p-2"
         style={{ borderColor: currentTheme.colors.sidebar.border }}
@@ -800,14 +855,15 @@ export function SidebarFooter({ collapsed }: SidebarFooterProps) {
 
           {!collapsed && (
             <>
-              <button
+              <Link
+                to="/settings"
                 className="p-2 rounded-lg hover:bg-opacity-50 transition-colors"
                 style={{
                   color: currentTheme.colors.text.secondary,
                 }}
               >
                 <Settings className="w-5 h-5" />
-              </button>
+              </Link>
 
               <button
                 className="p-2 rounded-lg hover:bg-opacity-50 transition-colors"
