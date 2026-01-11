@@ -1,0 +1,324 @@
+{
+  "marketplace": {
+    "id": "webrnds",
+    "name": "Webrnds Marketplace",
+    "version": "1.0.0",
+    "description": "Complete AI-powered consulting workflow automation tools for Design OS, Figma MCP, RALPH LOOP, Reflection System, and Beads integration",
+    "author": {
+      "name": "Webrnds",
+      "url": "https://github.com/0xtsotsi/Designbrnd"
+    },
+    "repository": "https://github.com/0xtsotsi/Designbrnd",
+    "homepage": "https://github.com/0xtsotsi/Designbrnd",
+    "license": "MIT",
+    "keywords": [
+      "design",
+      "consulting",
+      "automation",
+      "figma",
+      "testing",
+      "workflow",
+      "ai-agents",
+      "project-management"
+    ],
+    "categories": [
+      "design",
+      "development",
+      "project-management",
+      "productivity"
+    ]
+  },
+
+  "plugins": [
+    {
+      "id": "designbrnd-complete",
+      "name": "Designbrnd Complete Workflow",
+      "version": "1.0.0",
+      "description": "Complete 6-week consulting workflow with Design OS, Figma MCP, RALPH LOOP, and Reflection System",
+      "type": "bundle",
+      "install": {
+        "type": "script",
+        "command": "curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh -o install.sh && less install.sh && bash install.sh",
+        "description": "Downloads install script, allows review, then executes"
+      },
+      "includes": [
+        "design-os-commands",
+        "figma-mcp-config",
+        "ralph-loop-setup",
+        "reflection-skills",
+        "beads-templates"
+      ],
+      "tags": ["workflow", "complete", "consulting"],
+      "featured": true
+    },
+
+    {
+      "id": "design-os-commands",
+      "name": "Design OS Commands",
+      "version": "1.0.0",
+      "description": "Structured planning and design documentation system with 8 commands",
+      "type": "commands",
+      "install": {
+        "type": "git",
+        "repository": "https://github.com/0xtsotsi/Designbrnd.git",
+        "path": ".claude/commands/design-os",
+        "destination": ".claude/commands/design-os"
+      },
+      "commands": [
+        {
+          "name": "/product-vision",
+          "description": "Document business vision, goals, and target audience"
+        },
+        {
+          "name": "/product-roadmap",
+          "description": "Define deliverable sections and project phases"
+        },
+        {
+          "name": "/data-model",
+          "description": "Structure data entities and relationships"
+        },
+        {
+          "name": "/design-tokens",
+          "description": "Select brand colors and typography"
+        },
+        {
+          "name": "/shape-section",
+          "description": "Define section requirements and user flows"
+        },
+        {
+          "name": "/sample-data",
+          "description": "Generate realistic sample content"
+        },
+        {
+          "name": "/design-screen",
+          "description": "Create React component prototypes"
+        },
+        {
+          "name": "/export-product",
+          "description": "Generate complete handoff package"
+        }
+      ],
+      "tags": ["planning", "design", "documentation"],
+      "category": "design"
+    },
+
+    {
+      "id": "figma-mcp-integration",
+      "name": "Figma MCP Integration",
+      "version": "1.0.0",
+      "description": "AI-powered Figma design automation with cloud.md design rules",
+      "type": "mcp-server",
+      "install": {
+        "type": "git",
+        "repository": "https://github.com/Antonytm/figma-mcp-server.git",
+        "post_install": [
+          "npm install",
+          "npm run build"
+        ]
+      },
+      "dependencies": {
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0",
+        "figma-desktop": ">=116.0.0"
+      },
+      "configuration": {
+        "port": 38450,
+        "protocol": "websocket",
+        "design_rules": "cloud.md"
+      },
+      "files": [
+        {
+          "source": "https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/cloud.md",
+          "destination": "cloud.md",
+          "description": "Figma design rules and component standards"
+        }
+      ],
+      "tags": ["figma", "design", "automation", "mcp"],
+      "category": "design",
+      "external": true
+    },
+
+    {
+      "id": "ralph-loop-tdd",
+      "name": "RALPH LOOP - Test-Driven Development",
+      "version": "1.0.0",
+      "description": "Test-driven development workflow with visual verification for pixel-perfect implementations",
+      "type": "workflow",
+      "install": {
+        "type": "script",
+        "script": "setup-ralph-loop.sh"
+      },
+      "dependencies": {
+        "node": ">=18.0.0",
+        "@playwright/test": ">=1.40.0"
+      },
+      "files": [
+        {
+          "source": ".claude/commands/ralph-loop.md",
+          "destination": ".claude/commands/ralph-loop.md",
+          "description": "RALPH LOOP workflow guidance"
+        }
+      ],
+      "tags": ["testing", "tdd", "quality", "automation"],
+      "category": "development"
+    },
+
+    {
+      "id": "reflection-skills",
+      "name": "Reflection Skills System",
+      "version": "1.0.0",
+      "description": "Meta-learning system with 5 skills that improve from corrections over time",
+      "type": "skills",
+      "install": {
+        "type": "script",
+        "script": "setup-reflection.sh"
+      },
+      "skills": [
+        {
+          "id": "client-discovery",
+          "name": "Client Discovery",
+          "description": "Learns discovery question patterns and industry requirements",
+          "file": "~/.claude/skills/client-discovery/SKILL.md"
+        },
+        {
+          "id": "brand-design",
+          "name": "Brand Design",
+          "description": "Learns industry colors, component standards, typography pairings",
+          "file": "~/.claude/skills/brand-design/SKILL.md"
+        },
+        {
+          "id": "figma-design",
+          "name": "Figma Design Automation",
+          "description": "Learns cloud.md preferences and naming conventions",
+          "file": "~/.claude/skills/figma-design/SKILL.md"
+        },
+        {
+          "id": "implementation",
+          "name": "Implementation Standards",
+          "description": "Learns tech stack choices and code structure",
+          "file": "~/.claude/skills/implementation/SKILL.md"
+        },
+        {
+          "id": "qa-verification",
+          "name": "QA & Verification",
+          "description": "Learns screenshot verification and visual bug patterns",
+          "file": "~/.claude/skills/qa-verification/SKILL.md"
+        }
+      ],
+      "commands": [
+        {
+          "name": "/reflect",
+          "description": "Analyze session and update skills"
+        }
+      ],
+      "tags": ["learning", "ai", "improvement", "skills"],
+      "category": "productivity"
+    },
+
+    {
+      "id": "beads-integration",
+      "name": "Beads Project Tracker",
+      "version": "1.0.0",
+      "description": "Git-backed task tracking with persistent memory for AI agents",
+      "type": "tool",
+      "install": {
+        "type": "external",
+        "instructions": "Install from https://github.com/steveyegge/beads"
+      },
+      "optional": true,
+      "hooks": [
+        {
+          "event": "UserPromptSubmit",
+          "script": ".claude/hooks/user-prompt-submit-beads.sh",
+          "description": "Auto-displays next ready task"
+        }
+      ],
+      "templates": [
+        {
+          "name": "6-week-consulting",
+          "file": ".beads-template.json",
+          "description": "Complete 6-week project template"
+        }
+      ],
+      "tags": ["project-management", "tasks", "git", "memory"],
+      "category": "project-management"
+    },
+
+    {
+      "id": "workspace-initializer",
+      "name": "Workspace Initializer",
+      "version": "1.0.0",
+      "description": "One-command workspace setup for complete consulting workflow",
+      "type": "utility",
+      "install": {
+        "type": "script",
+        "script": "init-workspace.sh"
+      },
+      "usage": "./init-workspace.sh <project-name> <client-name>",
+      "tags": ["setup", "automation", "initialization"],
+      "category": "productivity",
+      "featured": true
+    }
+  ],
+
+  "workflows": [
+    {
+      "id": "6-week-consulting",
+      "name": "6-Week Consulting Workflow",
+      "description": "Complete end-to-end workflow from discovery to launch",
+      "version": "1.0.0",
+      "phases": [
+        {
+          "week": 1,
+          "name": "Discovery & Planning",
+          "plugins": ["design-os-commands"],
+          "commands": ["/product-vision", "/product-roadmap", "/data-model"],
+          "deliverables": ["Product overview", "Roadmap", "Data model"]
+        },
+        {
+          "week": 2,
+          "name": "Brand System Design",
+          "plugins": ["design-os-commands", "figma-mcp-integration"],
+          "commands": ["/design-tokens"],
+          "deliverables": ["Design tokens", "Brand guidelines", "Component library"]
+        },
+        {
+          "week": 3,
+          "name": "Screen Design",
+          "plugins": ["design-os-commands", "figma-mcp-integration"],
+          "commands": ["/shape-section", "/sample-data"],
+          "deliverables": ["Section specs", "Sample data", "Screen designs"]
+        },
+        {
+          "week": "4-5",
+          "name": "Implementation",
+          "plugins": ["ralph-loop-tdd", "design-os-commands"],
+          "commands": ["/export-product"],
+          "deliverables": ["Implemented features", "Passing tests", "Verified screenshots"]
+        },
+        {
+          "week": 6,
+          "name": "Launch",
+          "deliverables": ["Production deployment", "Client handoff", "Documentation"]
+        }
+      ],
+      "install_command": "./init-workspace.sh \"project-name\" \"Client Name\"",
+      "tags": ["workflow", "consulting", "complete"]
+    }
+  ],
+
+  "documentation": {
+    "getting_started": "docs/quick-start-guide.md",
+    "workflow_guide": "docs/consulting-workflow-guide.md",
+    "technical_reference": "docs/tool-integration-reference.md",
+    "architecture": "docs/architecture-diagram.md",
+    "initialization": "docs/workspace-initialization-guide.md",
+    "presentation": "slides.md"
+  },
+
+  "support": {
+    "issues": "https://github.com/0xtsotsi/Designbrnd/issues",
+    "discussions": "https://github.com/0xtsotsi/Designbrnd/discussions",
+    "documentation": "https://github.com/0xtsotsi/Designbrnd/tree/main/docs"
+  }
+}
