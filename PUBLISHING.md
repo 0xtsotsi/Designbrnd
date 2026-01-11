@@ -139,7 +139,14 @@ Complete AI-powered consulting workflow automation for Claude Code.
 ## Installation
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh)
+# Download the install script
+curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh -o install.sh
+
+# Review the script (recommended)
+less install.sh
+
+# Run the installation
+bash install.sh
 ```
 
 ## Quick Start
@@ -237,8 +244,10 @@ https://github.com/0xtsotsi/Designbrnd/blob/main/MARKETPLACE.md
 Users can install with:
 
 ```bash
-# Quick install
-bash <(curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh)
+# Download and run install script
+curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh -o install.sh
+less install.sh  # Review before running
+bash install.sh
 
 # Or via Claude Code (if integrated)
 claude marketplace install webrnds

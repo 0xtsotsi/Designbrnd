@@ -28,7 +28,7 @@
       ],
       "integration": {
         "design_os": true,
-        "cloud_md": true,
+        "claude_md": true,
         "beads": true
       }
     },

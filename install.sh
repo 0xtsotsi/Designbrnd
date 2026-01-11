@@ -6,7 +6,14 @@
 # Installs the complete Designbrnd consulting workflow
 #
 # Usage:
-#   bash <(curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh)
+#   # Download the script first
+#   curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh -o install.sh
+#
+#   # Review the script (recommended)
+#   less install.sh
+#
+#   # Run the installation
+#   bash install.sh
 #
 # Or locally:
 #   ./install.sh
@@ -44,7 +51,7 @@ if [ -f "webrnds-marketplace.json" ]; then
 else
     echo -e "${BLUE}ℹ${NC} Cloning Designbrnd repository..."
     TEMP_DIR=$(mktemp -d)
-    git clone https://github.com/0xtsotsi/Designbrnd.git "$TEMP_DIR" > /dev/null 2>&1
+    git clone https://github.com/0xtsotsi/Designbrnd.git "$TEMP_DIR"
     DESIGNBRND_ROOT="$TEMP_DIR"
     echo -e "${GREEN}✓${NC} Repository cloned"
 fi
@@ -208,9 +215,10 @@ fi
 # Initialize git in skills directory
 cd "$SKILLS_DIR"
 if [ ! -d ".git" ]; then
-    git init > /dev/null 2>&1
-    git add . > /dev/null 2>&1
-    git commit -m "Initial skills setup" > /dev/null 2>&1
+    echo -e "${BLUE}ℹ${NC} Initializing git repository for skills..."
+    git init
+    git add .
+    git commit -m "Initial skills setup"
     echo -e "${GREEN}✓${NC} Skills git repository initialized"
 fi
 

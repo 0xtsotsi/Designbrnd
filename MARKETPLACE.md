@@ -10,10 +10,17 @@ Official marketplace for Design OS, Figma MCP, RALPH LOOP, Reflection System, an
 
 ### Complete Bundle (Recommended)
 
-Install everything with one command:
+Install everything by downloading and running the install script:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh)
+# Download the install script
+curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh -o install.sh
+
+# Review the script (recommended)
+less install.sh
+
+# Run the installation
+bash install.sh
 ```
 
 This installs:
@@ -370,7 +377,14 @@ Or add to `~/.claude/settings.json`:
 ### 1. Install Complete Bundle
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh)
+# Download the install script
+curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh -o install.sh
+
+# Review the script (recommended)
+less install.sh
+
+# Run the installation
+bash install.sh
 ```
 
 ### 2. Initialize First Project

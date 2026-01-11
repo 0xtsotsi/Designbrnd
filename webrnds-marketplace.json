@@ -38,7 +38,8 @@
       "type": "bundle",
       "install": {
         "type": "script",
-        "command": "bash <(curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh)"
+        "command": "curl -fsSL https://raw.githubusercontent.com/0xtsotsi/Designbrnd/main/install.sh -o install.sh && less install.sh && bash install.sh",
+        "description": "Downloads install script, allows review, then executes"
       },
       "includes": [
         "design-os-commands",
